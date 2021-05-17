@@ -1,0 +1,3 @@
+#SAM build and deploy
+bucket="`echo dnl_repo_test | tr 'A-Z' 'a-z'`"
+sam build && sam deploy --stack-name "dnl_repo_test" --parameter-overrides "ParameterKey=project_name,ParameterValue=dnl_repo_test,ParameterKey=aws_region,ParameterValue=Throttle,ParameterKey=function_name,ParameterValue=replaceStringPost" --s3-bucket "bucket-$bucket" --s3-prefix "dnl_repo_test" --region "Throttle" --capabilities "CAPABILITY_IAM" --no-confirm-changeset
